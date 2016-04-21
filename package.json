@@ -2,7 +2,7 @@
   "name": "react-ultimate-pagination-material-ui",
   "version": "0.0.1",
   "description": "",
-  "main": "index.js",
+  "main": "babel/react-ultimate-pagination-material-ui.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
