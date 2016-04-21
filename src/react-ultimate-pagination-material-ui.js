@@ -1,7 +1,6 @@
 import React from 'react';
 import {createUltimatePagination, ITEM_TYPES} from 'react-ultimate-pagination';
 import FlatButton from 'material-ui/FlatButton';
-import IconButton from 'material-ui/IconButton';
 import NavigationFirstPage from 'material-ui/svg-icons/navigation/first-page';
 import NavigationLastPage from 'material-ui/svg-icons/navigation/last-page';
 import NavigationChevronLeft from 'material-ui/svg-icons/navigation/chevron-left';
@@ -16,27 +15,19 @@ const Ellipsis = () => (
 );
 
 const FirstPageLink = ({isActive, onClick}) => (
-  <IconButton disabled={isActive} onClick={onClick}>
-    <NavigationFirstPage/>
-  </IconButton>
+  <FlatButton icon={<NavigationFirstPage/>} disabled={isActive} onClick={onClick}/>
 );
 
 const PreviousPageLink = ({isActive, onClick}) => (
-  <IconButton disabled={isActive} onClick={onClick}>
-    <NavigationChevronLeft/>
-  </IconButton>
+  <FlatButton icon={<NavigationChevronLeft/>} disabled={isActive} onClick={onClick}/>
 );
 
 const NextPageLink = ({isActive, onClick}) => (
-  <IconButton disabled={isActive} onClick={onClick}>
-    <NavigationChevronRight/>
-  </IconButton>
+  <FlatButton icon={<NavigationChevronRight/>} disabled={isActive} onClick={onClick}/>
 );
 
 const LastPageLink = ({isActive, onClick}) => (
-  <IconButton disabled={isActive} onClick={onClick}>
-    <NavigationLastPage/>
-  </IconButton>
+  <FlatButton icon={<NavigationLastPage/>} disabled={isActive} onClick={onClick}/>
 );
 
 const itemTypeToMaterialUiComponent = {
