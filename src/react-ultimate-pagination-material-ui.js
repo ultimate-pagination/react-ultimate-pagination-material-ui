@@ -19,19 +19,19 @@ const Ellipsis = () => (
 );
 
 const FirstPageLink = ({isActive, onClick}) => (
-  <FlatButton style={flatButtonStyle} icon={<NavigationFirstPage/>} disabled={isActive} onClick={onClick}/>
+  <FlatButton style={flatButtonStyle} icon={<NavigationFirstPage/>} onClick={onClick}/>
 );
 
 const PreviousPageLink = ({isActive, onClick}) => (
-  <FlatButton style={flatButtonStyle} icon={<NavigationChevronLeft/>} disabled={isActive} onClick={onClick}/>
+  <FlatButton style={flatButtonStyle} icon={<NavigationChevronLeft/>} onClick={onClick}/>
 );
 
 const NextPageLink = ({isActive, onClick}) => (
-  <FlatButton style={flatButtonStyle} icon={<NavigationChevronRight/>} disabled={isActive} onClick={onClick}/>
+  <FlatButton style={flatButtonStyle} icon={<NavigationChevronRight/>} onClick={onClick}/>
 );
 
 const LastPageLink = ({isActive, onClick}) => (
-  <FlatButton style={flatButtonStyle} icon={<NavigationLastPage/>} disabled={isActive} onClick={onClick}/>
+  <FlatButton style={flatButtonStyle} icon={<NavigationLastPage/>} onClick={onClick}/>
 );
 
 const itemTypeToMaterialUiComponent = {
