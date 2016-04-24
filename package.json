@@ -23,7 +23,7 @@
     "material-ui": "^0.15.0-beta.1"
   },
   "dependencies": {
-    "react-ultimate-pagination": "0.6.0"
+    "react-ultimate-pagination": "0.7.1"
   },
   "devDependencies": {
     "babel-cli": "^6.7.7",

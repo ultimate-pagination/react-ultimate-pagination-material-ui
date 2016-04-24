@@ -14,8 +14,8 @@ const Page = ({value, isActive, onClick}) => (
   <FlatButton style={flatButtonStyle} label={value.toString()} primary={isActive} onClick={onClick}/>
 );
 
-const Ellipsis = () => (
-  <FlatButton style={flatButtonStyle} label="..." disabled={true} />
+const Ellipsis = ({onClick}) => (
+  <FlatButton style={flatButtonStyle} label="..." onClick={onClick}/>
 );
 
 const FirstPageLink = ({isActive, onClick}) => (
@@ -34,7 +34,7 @@ const LastPageLink = ({isActive, onClick}) => (
   <FlatButton style={flatButtonStyle} icon={<NavigationLastPage/>} onClick={onClick}/>
 );
 
-const itemTypeToMaterialUiComponent = {
+const itemTypeToComponent = {
   [ITEM_TYPES.PAGE]: Page,
   [ITEM_TYPES.ELLIPSIS]: Ellipsis,
   [ITEM_TYPES.FIRST_PAGE_LINK]: FirstPageLink,
@@ -43,6 +43,6 @@ const itemTypeToMaterialUiComponent = {
   [ITEM_TYPES.LAST_PAGE_LINK]: LastPageLink
 };
 
-const UltimatePaginationMaterialUi = createUltimatePagination(itemTypeToMaterialUiComponent);
+const UltimatePaginationMaterialUi = createUltimatePagination({itemTypeToComponent});
 
 export default UltimatePaginationMaterialUi;
