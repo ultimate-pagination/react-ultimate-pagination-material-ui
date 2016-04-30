@@ -5,8 +5,16 @@ module.exports = {
     library: 'reactUltimatePaginationMaterialUi',
     libraryTarget: 'umd',
   },
-  externals: [
-    'react',
+  externals:
+  [
+    {
+      react: {
+        root: 'React',
+        commonjs2: 'react',
+        commonjs: 'react',
+        amd: 'react'
+      }
+    },
     /^material-ui(\/.+)?$/
   ],
   devtool: 'source-map',
