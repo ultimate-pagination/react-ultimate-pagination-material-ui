@@ -1,6 +1,6 @@
 {
   "name": "react-ultimate-pagination-material-ui",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "",
   "main": "lib/react-ultimate-pagination-material-ui.js",
   "files": [
@@ -25,7 +25,7 @@
   },
   "homepage": "https://github.com/ultimate-pagination/react-ultimate-pagination-material-ui#readme",
   "peerDependencies": {
-    "material-ui": "^0.15.0"
+    "material-ui": "0.15.x || 0.16.x"
   },
   "dependencies": {
     "react-ultimate-pagination": "0.8.0"
