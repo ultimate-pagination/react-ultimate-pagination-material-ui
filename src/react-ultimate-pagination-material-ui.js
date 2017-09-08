@@ -1,6 +1,7 @@
 import React from 'react';
 import {createUltimatePagination, ITEM_TYPES} from 'react-ultimate-pagination';
-import FlatButton from 'material-ui/FlatButton';
+import Button from 'material-ui/Button';
+import IconButton from 'material-ui/IconButton';
 import NavigationFirstPage from 'material-ui-icons/FirstPage';
 import NavigationLastPage from 'material-ui-icons/LastPage';
 import NavigationChevronLeft from 'material-ui-icons/ChevronLeft';
@@ -11,27 +12,39 @@ const flatButtonStyle = {
 };
 
 const Page = ({value, isActive, onClick}) => (
-  <FlatButton style={flatButtonStyle} label={value.toString()} primary={isActive} onClick={onClick}/>
+  <Button style={flatButtonStyle} color={isActive ? 'primary' : ''} onClick={onClick}>
+    {value.toString()}
+  </Button>
 );
 
 const Ellipsis = ({onClick}) => (
-  <FlatButton style={flatButtonStyle} label="..." onClick={onClick}/>
+  <Button style={flatButtonStyle} label="..." onClick={onClick}>
+    ...
+  </Button>
 );
 
 const FirstPageLink = ({isActive, onClick}) => (
-  <FlatButton style={flatButtonStyle} icon={<NavigationFirstPage/>} onClick={onClick}/>
+  <IconButton style={flatButtonStyle} onClick={onClick}>
+    <NavigationFirstPage/>
+  </IconButton>
 );
 
 const PreviousPageLink = ({isActive, onClick}) => (
-  <FlatButton style={flatButtonStyle} icon={<NavigationChevronLeft/>} onClick={onClick}/>
+  <IconButton style={flatButtonStyle} onClick={onClick}>
+    <NavigationChevronLeft/>
+  </IconButton>
 );
 
 const NextPageLink = ({isActive, onClick}) => (
-  <FlatButton style={flatButtonStyle} icon={<NavigationChevronRight/>} onClick={onClick}/>
+  <IconButton style={flatButtonStyle} onClick={onClick}>
+    <NavigationChevronRight/>
+  </IconButton>
 );
 
 const LastPageLink = ({isActive, onClick}) => (
-  <FlatButton style={flatButtonStyle} icon={<NavigationLastPage/>} onClick={onClick}/>
+  <IconButton style={flatButtonStyle} onClick={onClick}>
+    <NavigationLastPage/>
+  </IconButton>
 );
 
 const itemTypeToComponent = {
