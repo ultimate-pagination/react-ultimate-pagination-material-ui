@@ -1,10 +1,10 @@
 import React from 'react';
 import {createUltimatePagination, ITEM_TYPES} from 'react-ultimate-pagination';
 import FlatButton from 'material-ui/FlatButton';
-import NavigationFirstPage from 'material-ui/svg-icons/navigation/first-page';
-import NavigationLastPage from 'material-ui/svg-icons/navigation/last-page';
-import NavigationChevronLeft from 'material-ui/svg-icons/navigation/chevron-left';
-import NavigationChevronRight from 'material-ui/svg-icons/navigation/chevron-right';
+import NavigationFirstPage from 'material-ui-icons/FirstPage';
+import NavigationLastPage from 'material-ui-icons/LastPage';
+import NavigationChevronLeft from 'material-ui-icons/ChevronLeft';
+import NavigationChevronRight from 'material-ui-icons/ChevronRight';
 
 const flatButtonStyle = {
   minWidth: 36

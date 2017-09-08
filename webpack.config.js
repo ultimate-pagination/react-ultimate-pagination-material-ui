@@ -1,7 +1,9 @@
+const path = require('path')
+
 module.exports = {
   entry: './src/react-ultimate-pagination-material-ui.js',
   output: {
-    path: './dist',
+    path: path.resolve(__dirname, './dist'),
     library: 'reactUltimatePaginationMaterialUi',
     libraryTarget: 'umd',
   },
@@ -19,14 +21,11 @@ module.exports = {
   ],
   devtool: 'source-map',
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.jsx?$/,
-        exclude: /(node_modules|bower_components)/,
-        loader: 'babel',
-        query: {
-          presets: ['es2015', 'react']
-        }
+        loader: 'babel-loader',
+        exclude: /(node_modules|bower_components)/
       }
     ]
   }
