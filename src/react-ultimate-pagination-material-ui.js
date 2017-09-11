@@ -1,48 +1,80 @@
 import React from 'react';
 import {createUltimatePagination, ITEM_TYPES} from 'react-ultimate-pagination';
-import FlatButton from 'material-ui/FlatButton';
-import NavigationFirstPage from 'material-ui/svg-icons/navigation/first-page';
-import NavigationLastPage from 'material-ui/svg-icons/navigation/last-page';
-import NavigationChevronLeft from 'material-ui/svg-icons/navigation/chevron-left';
-import NavigationChevronRight from 'material-ui/svg-icons/navigation/chevron-right';
+import jss from 'jss';
+import classnames from 'classnames';
+import Button from 'material-ui/Button';
+import IconButton from 'material-ui/IconButton';
+import NavigationFirstPage from 'material-ui-icons/FirstPage';
+import NavigationLastPage from 'material-ui-icons/LastPage';
+import NavigationChevronLeft from 'material-ui-icons/ChevronLeft';
+import NavigationChevronRight from 'material-ui-icons/ChevronRight';
 
-const flatButtonStyle = {
-  minWidth: 36
-};
+const {classes} = jss
+  .createStyleSheet({
+    button: {
+      height: '36px',
+      width: '36px',
+      'min-width': '36px'
+    },
+    wrapper: {
+      display: 'flex'
+    }
+  })
+  .attach();
 
-const Page = ({value, isActive, onClick}) => (
-  <FlatButton style={flatButtonStyle} label={value.toString()} primary={isActive} onClick={onClick}/>
-);
+export default function ({buttonClass, wrapperClass, wrapperComponent} = {}) {
+  const buttonClasses = classnames(classes.button, buttonClass)
+  const wrapperClasses = classnames(classes.wrapper, wrapperClass)
 
-const Ellipsis = ({onClick}) => (
-  <FlatButton style={flatButtonStyle} label="..." onClick={onClick}/>
-);
+  const Page = ({value, isActive, onClick}) => (
+    <Button className={buttonClasses} color={isActive ? 'primary' : 'default'} onClick={onClick}>
+      {value.toString()}
+    </Button>
+  );
 
-const FirstPageLink = ({isActive, onClick}) => (
-  <FlatButton style={flatButtonStyle} icon={<NavigationFirstPage/>} onClick={onClick}/>
-);
+  const Ellipsis = ({onClick}) => (
+    <Button className={buttonClasses} label="..." onClick={onClick}>
+      ...
+    </Button>
+  );
 
-const PreviousPageLink = ({isActive, onClick}) => (
-  <FlatButton style={flatButtonStyle} icon={<NavigationChevronLeft/>} onClick={onClick}/>
-);
+  const FirstPageLink = ({isActive, onClick}) => (
+    <IconButton className={buttonClasses} onClick={onClick}>
+      <NavigationFirstPage/>
+    </IconButton>
+  );
 
-const NextPageLink = ({isActive, onClick}) => (
-  <FlatButton style={flatButtonStyle} icon={<NavigationChevronRight/>} onClick={onClick}/>
-);
+  const PreviousPageLink = ({isActive, onClick}) => (
+    <IconButton className={buttonClasses} onClick={onClick}>
+      <NavigationChevronLeft/>
+    </IconButton>
+  );
 
-const LastPageLink = ({isActive, onClick}) => (
-  <FlatButton style={flatButtonStyle} icon={<NavigationLastPage/>} onClick={onClick}/>
-);
+  const NextPageLink = ({isActive, onClick}) => (
+    <IconButton className={buttonClasses} onClick={onClick}>
+      <NavigationChevronRight/>
+    </IconButton>
+  );
 
-const itemTypeToComponent = {
-  [ITEM_TYPES.PAGE]: Page,
-  [ITEM_TYPES.ELLIPSIS]: Ellipsis,
-  [ITEM_TYPES.FIRST_PAGE_LINK]: FirstPageLink,
-  [ITEM_TYPES.PREVIOUS_PAGE_LINK]: PreviousPageLink,
-  [ITEM_TYPES.NEXT_PAGE_LINK]: NextPageLink,
-  [ITEM_TYPES.LAST_PAGE_LINK]: LastPageLink
-};
+  const LastPageLink = ({isActive, onClick}) => (
+    <IconButton className={buttonClasses} onClick={onClick}>
+      <NavigationLastPage/>
+    </IconButton>
+  );
 
-const UltimatePaginationMaterialUi = createUltimatePagination({itemTypeToComponent});
+  function WrapperComponent(props) {
+    // default style here (use {display: 'flex'} to horizontally align `Button` and `IconButton`)
+    return wrapperComponent || <div className={wrapperClasses}>{props.children}</div>
+  };
 
-export default UltimatePaginationMaterialUi;
+  const itemTypeToComponent = {
+    [ITEM_TYPES.PAGE]: Page,
+    [ITEM_TYPES.ELLIPSIS]: Ellipsis,
+    [ITEM_TYPES.FIRST_PAGE_LINK]: FirstPageLink,
+    [ITEM_TYPES.PREVIOUS_PAGE_LINK]: PreviousPageLink,
+    [ITEM_TYPES.NEXT_PAGE_LINK]: NextPageLink,
+    [ITEM_TYPES.LAST_PAGE_LINK]: LastPageLink
+  };
+
+  return createUltimatePagination({itemTypeToComponent, WrapperComponent});
+}
