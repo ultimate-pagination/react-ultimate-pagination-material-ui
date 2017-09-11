@@ -7,42 +7,47 @@ import NavigationLastPage from 'material-ui-icons/LastPage';
 import NavigationChevronLeft from 'material-ui-icons/ChevronLeft';
 import NavigationChevronRight from 'material-ui-icons/ChevronRight';
 
-export default function ({buttonStyle}) {
+export default function ({buttonClass, wrapperClass, wrapperComponent} = {}) {
   const Page = ({value, isActive, onClick}) => (
-    <Button style={buttonStyle} color={isActive ? 'primary' : 'default'} onClick={onClick}>
+    <Button className={buttonClass} color={isActive ? 'primary' : 'default'} onClick={onClick}>
       {value.toString()}
     </Button>
   );
 
   const Ellipsis = ({onClick}) => (
-    <Button style={buttonStyle} label="..." onClick={onClick}>
+    <Button className={buttonClass} label="..." onClick={onClick}>
       ...
     </Button>
   );
 
   const FirstPageLink = ({isActive, onClick}) => (
-    <IconButton style={buttonStyle} onClick={onClick}>
+    <IconButton className={buttonClass} onClick={onClick}>
       <NavigationFirstPage/>
     </IconButton>
   );
 
   const PreviousPageLink = ({isActive, onClick}) => (
-    <IconButton style={buttonStyle} onClick={onClick}>
+    <IconButton className={buttonClass} onClick={onClick}>
       <NavigationChevronLeft/>
     </IconButton>
   );
 
   const NextPageLink = ({isActive, onClick}) => (
-    <IconButton style={buttonStyle} onClick={onClick}>
+    <IconButton className={buttonClass} onClick={onClick}>
       <NavigationChevronRight/>
     </IconButton>
   );
 
   const LastPageLink = ({isActive, onClick}) => (
-    <IconButton style={buttonStyle} onClick={onClick}>
+    <IconButton className={buttonClass} onClick={onClick}>
       <NavigationLastPage/>
     </IconButton>
   );
+
+  function WrapperComponent(props) {
+    // default style here (use {display: 'flex'} to horizontally align `Button` and `IconButton`)
+    return wrapperComponent || <div style={{display: 'flex'}} className={wrapperClass}>{props.children}</div>
+  };
 
   const itemTypeToComponent = {
     [ITEM_TYPES.PAGE]: Page,
@@ -53,5 +58,7 @@ export default function ({buttonStyle}) {
     [ITEM_TYPES.LAST_PAGE_LINK]: LastPageLink
   };
 
-  return createUltimatePagination({itemTypeToComponent});
+  return function() {
+    return createUltimatePagination({itemTypeToComponent, WrapperComponent});
+  }
 }
