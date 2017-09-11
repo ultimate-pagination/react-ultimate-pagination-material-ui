@@ -58,7 +58,5 @@ export default function ({buttonClass, wrapperClass, wrapperComponent} = {}) {
     [ITEM_TYPES.LAST_PAGE_LINK]: LastPageLink
   };
 
-  return function() {
-    return createUltimatePagination({itemTypeToComponent, WrapperComponent});
-  }
+  return createUltimatePagination({itemTypeToComponent, WrapperComponent});
 }
