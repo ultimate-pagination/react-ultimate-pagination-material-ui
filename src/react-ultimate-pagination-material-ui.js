@@ -10,28 +10,59 @@ const flatButtonStyle = {
   minWidth: 36
 };
 
-const Page = ({value, isActive, onClick}) => (
-  <FlatButton style={flatButtonStyle} label={value.toString()} primary={isActive} onClick={onClick}/>
+const Page = ({value, isActive, onClick, isDisabled}) => (
+  <FlatButton
+    style={flatButtonStyle}
+    label={value.toString()}
+    primary={isActive}
+    onClick={onClick}
+    disabled={isDisabled}
+  />
 );
 
-const Ellipsis = ({onClick}) => (
-  <FlatButton style={flatButtonStyle} label="..." onClick={onClick}/>
+const Ellipsis = ({onClick, isDisabled}) => (
+  <FlatButton
+    style={flatButtonStyle}
+    label="..."
+    onClick={onClick}
+    disabled={isDisabled}
+  />
 );
 
-const FirstPageLink = ({isActive, onClick}) => (
-  <FlatButton style={flatButtonStyle} icon={<NavigationFirstPage/>} onClick={onClick}/>
+const FirstPageLink = ({isActive, onClick, isDisabled}) => (
+  <FlatButton
+    style={flatButtonStyle}
+    icon={<NavigationFirstPage/>}
+    onClick={onClick}
+    disabled={isDisabled}
+  />
 );
 
-const PreviousPageLink = ({isActive, onClick}) => (
-  <FlatButton style={flatButtonStyle} icon={<NavigationChevronLeft/>} onClick={onClick}/>
+const PreviousPageLink = ({isActive, onClick, isDisabled}) => (
+  <FlatButton
+    style={flatButtonStyle}
+    icon={<NavigationChevronLeft/>}
+    onClick={onClick}
+    disabled={isDisabled}
+  />
 );
 
-const NextPageLink = ({isActive, onClick}) => (
-  <FlatButton style={flatButtonStyle} icon={<NavigationChevronRight/>} onClick={onClick}/>
+const NextPageLink = ({isActive, onClick, isDisabled}) => (
+  <FlatButton
+    style={flatButtonStyle}
+    icon={<NavigationChevronRight/>}
+    onClick={onClick}
+    disabled={isDisabled}
+  />
 );
 
-const LastPageLink = ({isActive, onClick}) => (
-  <FlatButton style={flatButtonStyle} icon={<NavigationLastPage/>} onClick={onClick}/>
+const LastPageLink = ({isActive, onClick, isDisabled}) => (
+  <FlatButton
+    style={flatButtonStyle}
+    icon={<NavigationLastPage/>}
+    onClick={onClick}
+    disabled={isDisabled}
+  />
 );
 
 const itemTypeToComponent = {
